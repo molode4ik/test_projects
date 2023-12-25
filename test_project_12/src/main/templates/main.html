@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Prices</title>
+</head>
+<body>
+    <h1>Stock Prices</h1>
+
+    <form method="GET" action="">
+        <label for="start_date">Volume</label>
+        <input type="number" name="volume" value="{{ request.GET.volume }}">
+        <button type="submit">Filter</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Open Price</th>
+                <th>High Price</th>
+                <th>Low Price</th>
+                <th>Close Price</th>
+                <th>Volume</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for price in stock_prices %}
+                <tr>
+                    <td>{{ price.timestamp }}</td>
+                    <td>{{ price.open_price }}</td>
+                    <td>{{ price.high_price }}</td>
+                    <td>{{ price.low_price }}</td>
+                    <td>{{ price.close_price }}</td>
+                    <td>{{ price.volume }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
